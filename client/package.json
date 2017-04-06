@@ -1,0 +1,19 @@
+{
+  "name": "makerslab-farm",
+  "version": "0.0.0",
+  "description": "Webb app for managing multiple 3D printers running octoprint",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/MakersLab/farm.git"
+  },
+  "author": "Jakub Zika",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MakersLab/farm/issues"
+  },
+  "homepage": "https://github.com/MakersLab/farm#readme"
+}
