@@ -1,0 +1,28 @@
+env:
+  browser: true
+  es6: true
+  node: true
+extends: 'airbnb'
+parserOptions:
+  ecmaFeatures:
+    experimentalObjectRestSpread: true
+    jsx: true
+  sourceType: module
+plugins:
+  - react
+  - redux-saga
+rules:
+  indent:
+    - error
+    - 2
+  linebreak-style:
+    - error
+    - unix
+  quotes:
+    - error
+    - single
+  semi:
+    - error
+    - always
+  no-console: ["error", { allow: ["warn", "error", "log"] }]
+  react/jsx-filename-extension: [1, { "extensions": [".js", ".jsx"] }]
