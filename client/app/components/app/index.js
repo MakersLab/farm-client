@@ -12,6 +12,7 @@ class MainApp extends React.Component {
       <div>
         <div>
           {this.props.text}
+          <button onClick={() => { this.props.onButtonClick(); }}>fetch config</button>
         </div>
         <div>
           <MainView />

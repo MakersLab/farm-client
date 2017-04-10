@@ -2,15 +2,18 @@ import { connect } from 'react-redux';
 
 import MainApp from '../components/app';
 
+import { fetchConfig } from '../actions/app';
+
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     text: state.app.text,
   };
 };
 
-const mapDispatchToProps = state => ({
-
+const mapDispatchToProps = dispatch => ({
+  onButtonClick: () => {
+    dispatch(fetchConfig());
+  },
 });
 
 const App = connect(

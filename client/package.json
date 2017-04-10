@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config ./internals/webpack/webpack.dev.babel.js",
-    "dev": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ./internals/webpack/webpack.dev.babel.js"
+    "dev": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ./internals/webpack/webpack.dev.babel.js --host=0.0.0.0"
   },
   "repository": {
     "type": "git",
@@ -83,6 +83,7 @@
     "redux": "^3.6.0",
     "redux-immutable": "3.0.8",
     "redux-saga": "^0.14.0",
+    "request": "^2.81.0",
     "styled-components": "^1.1.2",
     "warning": "^3.0.0",
     "webpack": "^2.3.1"

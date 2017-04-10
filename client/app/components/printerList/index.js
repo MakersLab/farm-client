@@ -8,8 +8,8 @@ class PrinterListComponent extends React.Component {
   }
 
   generatePrinterList(printers) {
-    return printers.map(printer =>
-      <Printer {...printer} />,
+    return Object.keys(printers).map(printer =>
+      <Printer {...printers[printer]} id={printer} />,
     );
   }
 
@@ -21,8 +21,9 @@ class PrinterListComponent extends React.Component {
   }
 }
 
+
 PrinterListComponent.propTypes = {
-  printers: PropTypes.array.isRequired,
+  printers: PropTypes.object.isRequired,
 };
 
 export default PrinterListComponent;

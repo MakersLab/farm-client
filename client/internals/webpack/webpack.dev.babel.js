@@ -95,6 +95,12 @@ module.exports = {
     },
     ],
   },
+  node: {
+    net: 'empty',
+    fs: 'empty',
+    tls: 'empty',
+    dns: 'empty',
+  },
 };
 
 function template() {
