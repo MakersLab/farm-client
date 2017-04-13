@@ -1,6 +1,6 @@
 {
   "name": "makerslab-farm",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Webb app for managing multiple 3D printers running octoprint",
   "main": "index.js",
   "scripts": {
