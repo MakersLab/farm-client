@@ -6,6 +6,7 @@ export const addPrinter = (printer, id) => ({
   type: PRINTER_ADD,
   printer,
   id,
+  link,
 });
 
 export const updatePrinterState = data => ({
