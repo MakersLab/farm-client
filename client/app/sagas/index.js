@@ -13,8 +13,6 @@ function initWebsocket() {
   const returnThis = eventChannel((emitter) => {
     const ws = new WebSocket(WEBSOCKET_URL);
     ws.onopen = () => {
-      console.log('opening...');
-      ws.send('hello server');
     };
     ws.onerror = (error) => {
       console.log(`WebSocket error ${error}`);
@@ -32,7 +30,6 @@ function initWebsocket() {
     };
     // unsubscribe function
     return () => {
-      console.log('Socket off');
     };
   });
   return returnThis;
@@ -51,7 +48,7 @@ function loadConfig() {
 function* makeRequest() {
   const data = yield call(loadConfig);
   let actions = _.map(data.printers, (data, key) => {
-    return addPrinter(data.name, key);
+    return addPrinter(data.name, key, data.url);
   });
   for (let i = 0; i < actions.length; i++) {
     yield put(actions[i])

@@ -11,8 +11,9 @@ const initialAppState = {
 const mainViewReducer = (state = initialAppState, action) => {
   switch (action.type) {
   case PRINTER_ADD: {
-    let newState = _.cloneDeep(state);
-    newState.printers[action.id] = (printer.createPrinter(action.printer, printerState.PRINTING))
+    const newState = _.cloneDeep(state);
+    newState.printers[action.id] = (
+      printer.createPrinter(action.printer, 'Loading', action.link));
     return newState;
   }
   case PRINTER_UPDATE_STATE: {
