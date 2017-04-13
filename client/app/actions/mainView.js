@@ -13,3 +13,10 @@ export const updatePrinterState = data => ({
   type: PRINTER_UPDATE_STATE,
   data,
 });
+
+export const printerToggle = printer => ({
+  type: PRINTER_TOGGLE,
+  printer,
+});
+
+// export const print =

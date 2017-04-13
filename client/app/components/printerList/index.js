@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-import Printer from '../printer'
+import Printer from '../printer';
 
 class PrinterListComponent extends React.Component {
   constructor(props) {
@@ -9,7 +9,9 @@ class PrinterListComponent extends React.Component {
 
   generatePrinterList(printers) {
     return Object.keys(printers).map(printer =>
-      <Printer {...printers[printer]} id={printer} />,
+      <Printer
+        {...printers[printer]} key={printer}
+        toggleSelected={() => { this.props.toggleSelected(printer); }} />,
     );
   }
 
@@ -24,6 +26,7 @@ class PrinterListComponent extends React.Component {
 
 PrinterListComponent.propTypes = {
   printers: PropTypes.object.isRequired,
+  toggleSelected: PropTypes.func.isRequired,
 };
 
 export default PrinterListComponent;
