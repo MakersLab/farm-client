@@ -1,6 +1,6 @@
 import React from 'react';
 import PrinterList from '../../containers/printer'
-
+import ControllBar from '../../containers/controllBar';
 
 class MainViewComponent extends React.Component {
   constructor(props) {
@@ -9,6 +9,7 @@ class MainViewComponent extends React.Component {
   render() {
     return (<div>
       <PrinterList />
+      <ControllBar />
     </div>);
   }
 }
