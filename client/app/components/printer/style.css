@@ -1,4 +1,5 @@
 .printer {
+  display: inline-block;
   background-color: #eee;
   border: solid 1px grey;
   padding: 1px;
