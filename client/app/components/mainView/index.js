@@ -9,7 +9,6 @@ class MainViewComponent extends React.Component {
   render() {
     return (<div>
       <PrinterList />
-      <ControllBar />
     </div>);
   }
 }
