@@ -6,8 +6,6 @@ const cheerio = require('cheerio');
 
 
 const plugins = [
-  new webpack.HotModuleReplacementPlugin(),
-  new webpack.NamedModulesPlugin(),
   // new webpack.NoErrorsPlugin(),
   new HtmlWebpackPlugin({
     path: '',
@@ -29,9 +27,6 @@ const plugins = [
 
 module.exports = {
   entry: [
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
     path.join(process.cwd(), 'app/app.js'),
   ],
   output: {
@@ -41,11 +36,6 @@ module.exports = {
     chunkFilename: '[name].chunk.js',
   },
   devtool: 'inline-source-map',
-  devServer: {
-    hot: true,
-    contentBase: path.resolve(__dirname, 'build'),
-    publicPath: '/',
-  },
   plugins,
   module: {
     loaders: [{
@@ -92,10 +82,6 @@ module.exports = {
       query: {
         limit: 10000,
       },
-    },
-    {
-      test: /\.(eot|svg|ttf|woff|woff2)$/,
-      loader: 'file?name=public/fonts/[name].[ext]',
     },
     ],
   },

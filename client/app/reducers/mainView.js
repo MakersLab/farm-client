@@ -1,29 +1,39 @@
-import * as printerState from '../constants/printer';
 import printer from '../lib/createPrinter';
 import _ from 'lodash';
 
-import { PRINTER_ADD, PRINTER_UPDATE_STATE } from '../actions/mainView';
+import { PRINTER_ADD, PRINTER_UPDATE_STATE, PRINTER_TOGGLE } from '../actions/mainView';
 
 const initialAppState = {
   printers: {},
+  selectedPrinters: [],
 };
 
 const mainViewReducer = (state = initialAppState, action) => {
   switch (action.type) {
   case PRINTER_ADD: {
-    let newState = _.cloneDeep(state);
-    newState.printers[action.id] = (printer.createPrinter(action.printer, printerState.PRINTING))
+    const newState = _.cloneDeep(state);
+    newState.printers[action.id] = (
+      printer.createPrinter(action.printer, 'Loading', action.link));
     return newState;
   }
   case PRINTER_UPDATE_STATE: {
-    let newState = _.cloneDeep(state);
-    console.log(action.data);
-    _.forEach(action.data.data, (currentPrinterState, printerId)=>{
-      console.log('this');
-      if(newState.printers[printerId]){
-        newState.printers[printerId] = Object.assign(newState.printers[printerId], currentPrinterState);
+    const newState = _.cloneDeep(state);
+    _.forEach(action.data.data, (currentPrinterState, printerId) => {
+      if (newState.printers[printerId]) {
+        newState.printers[printerId] = Object.assign(
+          newState.printers[printerId], currentPrinterState);
       }
     });
+    return newState;
+  }
+  case PRINTER_TOGGLE: {
+    const newState = _.cloneDeep(state);
+    if (newState.selectedPrinters.length > 0 && newState.selectedPrinters.indexOf(action.printer) >= 0) {
+      newState.selectedPrinters.splice(newState.selectedPrinters.indexOf(action.printer), 1);
+    } else {
+      newState.selectedPrinters.push(action.printer);
+    }
+    newState.printers[action.printer].selected = !newState.printers[action.printer].selected;
     return newState;
   }
   default:

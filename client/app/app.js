@@ -25,9 +25,9 @@ const render = (Component) => {
   );
 };
 
-render(App);
-
 sagaMiddleware.run(wsSagas);
+
+render(App);
 
 if (module.hot) {
   module.hot.accept('./containers/app', () => {

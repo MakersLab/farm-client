@@ -1,5 +1,5 @@
-export const REMOTE_BASE = 'http://opeteth.mooo.com';
-export const WEBSOCKET_BASE = 'ws://opeteth.mooo.com';
+export const REMOTE_BASE = `http://${window.location.hostname}`;
+export const WEBSOCKET_BASE = `ws://${window.location.hostname}`;
 
 export const API_PORT = '8000';
 export const WEBSOCKET_PORT = '8001';
