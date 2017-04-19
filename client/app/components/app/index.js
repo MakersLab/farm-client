@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import _ from 'lodash';
 import MainView from '../../containers/mainView';
 
 import style from './style.css';

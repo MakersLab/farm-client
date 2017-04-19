@@ -1,7 +1,7 @@
 import 'babel-polyfill';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { AppContainer } from 'react-hot-loader';
@@ -14,8 +14,8 @@ import wsSagas from './sagas';
 const sagaMiddleware = createSagaMiddlevar();
 const store = createStore(reducer, applyMiddleware(sagaMiddleware));
 
-const render = (Component) => {
-  ReactDOM.render(
+const renderApp = (Component) => {
+  render(
     <AppContainer>
       <Provider store={store}>
         <Component />
@@ -27,10 +27,10 @@ const render = (Component) => {
 
 sagaMiddleware.run(wsSagas);
 
-render(App);
+renderApp(App);
 
 if (module.hot) {
   module.hot.accept('./containers/app', () => {
-    render(App);
+    renderApp(App);
   });
 }

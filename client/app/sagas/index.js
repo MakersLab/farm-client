@@ -2,12 +2,11 @@ import 'babel-polyfill';
 
 import { eventChannel } from 'redux-saga';
 import { put, takeEvery, call, take } from 'redux-saga/effects';
-import _ from 'lodash';
+import { map } from 'lodash';
 
 import { WEBSOCKET_URL, API_URL } from '../lib/config';
-import { APP_FETCH_CONFIG, test } from '../actions/app';
+import { APP_FETCH_CONFIG } from '../actions/app';
 import { addPrinter, updatePrinterState } from '../actions/mainView';
-import request from '../lib/request';
 
 function initWebsocket() {
   const returnThis = eventChannel((emitter) => {
@@ -37,21 +36,22 @@ function initWebsocket() {
 
 function loadConfig() {
   return fetch(`${API_URL}/api/printer-config`)
-    .then(response => {
+    .then((response) => {
+      //
       return response.json()
     })
-    .catch(error => {
+    .catch((error) => {
       throw error;
     })
 }
 
 function* makeRequest() {
   const data = yield call(loadConfig);
-  let actions = _.map(data.printers, (data, key) => {
-    return addPrinter(data.name, key, data.url);
+  const actions = map(data.printers, (printer, key) => {
+    return addPrinter(printer.name, key, printer.url);
   });
-  for (let i = 0; i < actions.length; i++) {
-    yield put(actions[i])
+  for (let i = 0; i < actions.length; i += 1) {
+    yield put(actions[i]);
   }
 }
 

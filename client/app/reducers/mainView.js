@@ -1,5 +1,5 @@
+import { cloneDeep, forEach } from 'lodash';
 import printer from '../lib/createPrinter';
-import _ from 'lodash';
 
 import { PRINTER_ADD, PRINTER_UPDATE_STATE, PRINTER_TOGGLE } from '../actions/mainView';
 
@@ -11,14 +11,14 @@ const initialAppState = {
 const mainViewReducer = (state = initialAppState, action) => {
   switch (action.type) {
   case PRINTER_ADD: {
-    const newState = _.cloneDeep(state);
+    const newState = cloneDeep(state);
     newState.printers[action.id] = (
       printer.createPrinter(action.printer, 'Loading', action.link));
     return newState;
   }
   case PRINTER_UPDATE_STATE: {
-    const newState = _.cloneDeep(state);
-    _.forEach(action.data.data, (currentPrinterState, printerId) => {
+    const newState = cloneDeep(state);
+    forEach(action.data.data, (currentPrinterState, printerId) => {
       if (newState.printers[printerId]) {
         newState.printers[printerId] = Object.assign(
           newState.printers[printerId], currentPrinterState);
@@ -27,7 +27,7 @@ const mainViewReducer = (state = initialAppState, action) => {
     return newState;
   }
   case PRINTER_TOGGLE: {
-    const newState = _.cloneDeep(state);
+    const newState = cloneDeep(state);
     if (newState.selectedPrinters.length > 0 && newState.selectedPrinters.indexOf(action.printer) >= 0) {
       newState.selectedPrinters.splice(newState.selectedPrinters.indexOf(action.printer), 1);
     } else {
