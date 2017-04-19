@@ -93,6 +93,10 @@ module.exports = {
         limit: 10000,
       },
     },
+    {
+      test: /\.(eot|svg|ttf|woff|woff2)$/,
+      loader: 'file?name=public/fonts/[name].[ext]',
+    },
     ],
   },
   node: {
