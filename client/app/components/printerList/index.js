@@ -15,9 +15,8 @@ class PrinterListComponent extends React.Component {
     let keys = Object.keys(this.props.printers);
     let printerRows = [];
     if (keys.length > 0) {
-      let howManyTimes = Math.floor(keys.length / 2);
+      let howManyTimes = Math.ceil(keys.length / 2);
       for (let i = 0; i < howManyTimes; i+=1) {
-        console.log(Math.floor(keys.length/2));
         printerRows.push(
           <div key={i}>
             {this.getPrinterComponent(keys[i * 2])}
