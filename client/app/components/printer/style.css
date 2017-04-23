@@ -52,7 +52,7 @@
   color: #2c2c2d;
   transition: 0.2s;
   &:hover{
-    color: #67676c;
+    color: #1d1dd2;
   }
 }
 
@@ -64,5 +64,10 @@
 span {
   font-weight: bold;
   font-family: 'roboto';
-  overflow: scroll;
+
+}
+
+.info {
+  text-overflow: ellipsis;
+  overflow-x: hidden;
 }

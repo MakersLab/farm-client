@@ -43,12 +43,12 @@ const Printer = ({ name, state, progress, nozzleTemperature, bedTemperature, fil
       { selected && <div className={style.printerSelected}>selected</div> }
     </div>
     <div className={`${style.printerBody} ${selected ? style['printerBody--selected'] : ''}`} onClick={toggleSelected}>
-      <div>state: <span>{state}</span></div>
-      <div>nozzle temperature: <span>{nozzleTemperature}</span>{getUnits('temperature')}</div>
-      <div>bed temperature: <span>{bedTemperature}</span>{getUnits('temperature')}</div>
-      <div>file name: <span>{fileName}</span></div>
-      <div>time printing: <span>{convertMinutesDuration(timePrinting)}</span></div>
-      <div>time remaining: <span>{convertMinutesDuration(timeRemaining)}</span></div>
+      <div className={style.info}>state: <span>{state}</span></div>
+      <div className={style.info}>nozzle temperature: <span>{nozzleTemperature}</span>{getUnits('temperature')}</div>
+      <div className={style.info}>bed temperature: <span>{bedTemperature}</span>{getUnits('temperature')}</div>
+      <div className={style.info} title={fileName}>file name: <span>{fileName}</span></div>
+      <div className={style.info}>time printing: <span>{convertMinutesDuration(timePrinting)}</span></div>
+      <div className={style.info}>time remaining: <span>{convertMinutesDuration(timeRemaining)}</span></div>
         <ProgressBarLine
           progress={progress/100}
           text={progress}
