@@ -1,7 +1,11 @@
 .printerList {
-
 }
 
 .printerListRow {
-  
+
+}
+
+.lastUpdated {
+  color: #7d681d;
+  font-weight: 600;
 }

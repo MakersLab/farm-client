@@ -24,6 +24,7 @@ const mainViewReducer = (state = initialAppState, action) => {
           newState.printers[printerId], currentPrinterState);
       }
     });
+    newState.lastUpdated = action.data.timestamp;
     return newState;
   }
   case PRINTER_TOGGLE: {

@@ -5,6 +5,7 @@ import { printerToggle } from '../actions/mainView';
 
 const mapStateToProps = state => ({
   printers: state.printer.printers,
+  updated: state.printer.lastUpdated,
 });
 
 const mapDispatchToProps = dispatch => ({

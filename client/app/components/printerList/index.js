@@ -1,9 +1,14 @@
 import React, { PropTypes } from 'react';
+import moment from 'moment';
 
 import style from './style.css';
 import Printer from '../printer';
 
 class PrinterListComponent extends React.Component {
+
+  formatTime(timestamp) {
+    return moment.unix(timestamp).format('YYYY:MM:DD HH:mm:ss');
+  }
 
   getPrinterComponent(key) {
     return (<Printer
@@ -32,6 +37,7 @@ class PrinterListComponent extends React.Component {
     return (
       <div className={style.printerList}>
         {this.generatePrinterList()}
+        <div className={style.lastUpdated}>last updated {this.formatTime(this.props.updated)}</div>
       </div>);
   }
 }
