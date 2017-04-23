@@ -39,7 +39,8 @@ const progressBarOptions = {
 const Printer = ({ name, state, progress, nozzleTemperature, bedTemperature, fileName, timePrinting, timeRemaining, link, selected, toggleSelected}) => (
   <div className={`printer ${style.printer}`}>
     <div className={`${style.printerHeader} ${selected ? style['printer--selected'] : '' }`}>
-      <div><span className={style.printerName} href={link}>{name}</span><a href={link} className={style.printerNameLink}> +</a></div>
+      <div className={style.printerName}><a href={link} className={style.printerNameLink} target="_blank" rel="noreferrer noopener"><span>{name}</span></a></div>
+      { selected && <div className={style.printerSelected}>selected</div> }
     </div>
     <div className={`${style.printerBody} ${selected ? style['printerBody--selected'] : ''}`} onClick={toggleSelected}>
       <div>state: <span>{state}</span></div>

@@ -33,11 +33,27 @@
   margin: 3px;
 }
 
+.printerName {
+  display: inline;
+  text-align: left;
+}
+
+.printerSelected {
+  display: inline;
+  text-align: right;
+  float: right;
+}
+
 .printerNameLink {
+  display: inline;
   text-decoration: none;
   font-size: 1.2em;
   font-weight: bold;
-  color: #44f;
+  color: #2c2c2d;
+  transition: 0.2s;
+  &:hover{
+    color: #67676c;
+  }
 }
 
 .progressBar {
