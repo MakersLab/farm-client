@@ -1,0 +1,8 @@
+.selectedPrinters {
+  list-style: none;
+  font-family: 'roboto';
+  &Line {
+    list-style: none;
+    font-weight: 400;
+  }
+}
