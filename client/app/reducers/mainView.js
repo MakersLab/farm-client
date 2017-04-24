@@ -6,6 +6,7 @@ import { PRINTER_ADD,
   PRINTER_TOGGLE,
   FILE_UPLOAD_MODAL_TOGGLE,
   SET_FILE_UPLOAD_STATE,
+  PRINTER_CONFIRM_MODAL,
  } from '../actions/mainView';
 
 const initialAppState = {
@@ -13,6 +14,10 @@ const initialAppState = {
   selectedPrinters: [],
   fileUploadModal: false,
   isUploadingFile: false,
+  printerConfirmModal: {
+    state: false,
+    actionType: 'none',
+  },
 };
 
 const mainViewReducer = (state = initialAppState, action) => {
@@ -57,6 +62,17 @@ const mainViewReducer = (state = initialAppState, action) => {
   case SET_FILE_UPLOAD_STATE: {
     const newState = cloneDeep(state);
     newState.isUploadingFile = action.state;
+    return newState;
+  }
+
+  case PRINTER_CONFIRM_MODAL: {
+    const newState = cloneDeep(state);
+    newState.printerConfirmModal.state = action.state;
+    if (action.state) {
+      newState.printerConfirmModal.actionType = action.actionType;
+    } else {
+      newState.printerConfirmModal.actionType = 'none';
+    }
     return newState;
   }
 

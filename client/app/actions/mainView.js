@@ -13,6 +13,8 @@ export const PRINTER_REQUEST_COMPLETED = 'PRINTER_REQUEST_COMPLETED';
 export const FILE_UPLOAD_MODAL_TOGGLE = 'FILE_UPLOAD_MODAL_TOGGLE';
 export const SET_FILE_UPLOAD_STATE = 'SET_FILE_UPLOAD_STATE';
 
+export const PRINTER_CONFIRM_MODAL = 'PRINTER_CONFIRM_MODAL';
+
 export const addPrinter = (printer, id, link) => ({
   type: PRINTER_ADD,
   printer,
@@ -39,3 +41,14 @@ export const setFileUploadState = state => ({
   type: SET_FILE_UPLOAD_STATE,
   state,
 });
+
+export const setPrinterActionConfirmModalState = (state, actionType) => {
+  const action = {
+    type: PRINTER_CONFIRM_MODAL,
+    state,
+  };
+  if (state) {
+    action.actionType = actionType;
+  }
+  return action;
+};
