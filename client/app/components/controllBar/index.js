@@ -4,6 +4,7 @@ import Modal from 'react-modal';
 import ControllButton from '../ControllButton';
 import H1 from '../h1';
 import FileUploadModal from '../fileUploadModal';
+import PrinterActionConfirmModal from '../confirmModal';
 import style from './style.css';
 import api from '../../lib/api';
 
@@ -12,10 +13,7 @@ class ControllBar extends React.Component {
     super(props);
 
     this.makeRequest = this.makeRequest.bind(this);
-    this.onPrintButtonClick = this.onPrintButtonClick.bind(this);
-    this.onPauseButtonClick = this.onPauseButtonClick.bind(this);
-    this.onLoadButtonClick = this.onLoadButtonClick.bind(this);
-    this.onResumeButtonClick = this.onResumeButtonClick.bind(this);
+    this.getConfirmModalSettings = this.getConfirmModalSettings.bind(this);
   }
 
   makeRequest(command) {
@@ -25,13 +23,6 @@ class ControllBar extends React.Component {
     });
   }
 
-  onPrintButtonClick() {
-    this.makeRequest('print');
-  }
-
-  onPauseButtonClick() {
-    this.makeRequest('pause');
-  }
   onLoadButtonClick() {
     this.props.setFileUploadModal(true);
   }
@@ -45,8 +36,48 @@ class ControllBar extends React.Component {
     });
   }
 
-  onResumeButtonClick() {
-    this.makeRequest('resume');
+  getConfirmModalSettings() {
+    return {
+      isOpen: this.props.confirmModalState,
+      onYes: () => {
+        this.makeRequest(this.props.confirmModalActionType.toLowerCase());
+        this.props.setPrinterActionConfirmModalState(false);
+      },
+      onNo: () => {
+        this.props.setPrinterActionConfirmModalState(false);
+      },
+      selectedPrinters: this.props.selectedPrinterNames,
+    };
+  }
+
+  controllButtonClick(type) {
+    if (!(this.props.fileUploadModal && this.props.confirmModalState)) {
+      switch (type) {
+      case 'PRINT': {
+        this.props.setPrinterActionConfirmModalState(true, type);
+        break;
+      }
+      case 'PAUSE': {
+        this.props.setPrinterActionConfirmModalState(true, type);
+        break;
+      }
+      case 'LOAD': {
+        this.props.setFileUploadModal(true);
+        break;
+      }
+      case 'RESUME': {
+        this.props.setPrinterActionConfirmModalState(true, type);
+        break;
+      }
+      default: {
+        break;
+      }
+      }
+    }
+  }
+
+  getConfirmModalText(type) {
+    return `Confirm ${type.toUpperCase()} action`;
   }
 
   render() {
@@ -55,17 +86,17 @@ class ControllBar extends React.Component {
       close: () => { this.props.setFileUploadModal(false); },
       confirm: (file) => { this.uploadFile(file); },
       isUploadingFile: this.props.isUploadingFile,
+      selectedPrinters: this.props.selectedPrinterNames,
     };
-    console.log(this.props.isUploadingFile);
-
     const disabled = this.props.selectedPrinters.length <= 0;
     return (
       <div className={style.controllBar}>
-        <ControllButton disabled={disabled} onClick={() => { this.onPrintButtonClick(); }}>print</ControllButton>
-        <ControllButton disabled={disabled} onClick={this.onPauseButtonClick}>pause</ControllButton>
-        <ControllButton disabled={disabled} onClick={this.onLoadButtonClick}>load</ControllButton>
-        <ControllButton disabled={disabled} onClick={this.onResumeButtonClick}>resume</ControllButton>
+        <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('PRINT'); }}>print</ControllButton>
+        <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('LOAD'); }}>load</ControllButton>
+        <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('PAUSE'); }}>pause</ControllButton>
+        <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('RESUME'); }}>resume</ControllButton>
         <FileUploadModal {...modalSettings} />
+        <PrinterActionConfirmModal {...this.getConfirmModalSettings()}>{this.getConfirmModalText(this.props.confirmModalActionType)}</PrinterActionConfirmModal>
       </div>);
   }
 }

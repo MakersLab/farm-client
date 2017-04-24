@@ -4,6 +4,7 @@ import Modal from 'react-modal';
 
 import H1 from '../h1';
 import ControllButton from '../controllButton';
+import SelectedPrinters from '../selectedPrinters';
 
 let fileInput;
 
@@ -28,7 +29,7 @@ function onUploadButtonClick(confirm) {
   }
 }
 
-const FileUploadModal = ({ isOpen, children, close, confirm, isUploadingFile }) => (
+const FileUploadModal = ({ isOpen, children, close, confirm, isUploadingFile, selectedPrinters }) => (
   <Modal
     isOpen={isOpen}
     className={style.modal}
@@ -36,6 +37,7 @@ const FileUploadModal = ({ isOpen, children, close, confirm, isUploadingFile }) 
     onRequestClose={() => { close(); }}>
     <H1>File upload</H1>
     { isUploadingFile && <span>this is a loading spinner for now</span> }
+    <SelectedPrinters selectedPrinters={selectedPrinters} />
     <span className={style.fileName}>{fileInput && extractFileNameFromPath(fileInput.value)}</span>
     <ControllButton onClick={() => { fileInput.click(); }}>Load file</ControllButton>
     <input type="file" hidden open ref={(input) => { fileInput = input; }} accept=".gcode"/>
