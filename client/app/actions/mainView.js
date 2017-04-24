@@ -10,6 +10,9 @@ export const PRINTER_STOP = 'PRINTER_STOP';
 
 export const PRINTER_REQUEST_COMPLETED = 'PRINTER_REQUEST_COMPLETED';
 
+export const FILE_UPLOAD_MODAL_TOGGLE = 'FILE_UPLOAD_MODAL_TOGGLE';
+export const SET_FILE_UPLOAD_STATE = 'SET_FILE_UPLOAD_STATE';
+
 export const addPrinter = (printer, id, link) => ({
   type: PRINTER_ADD,
   printer,
@@ -27,4 +30,12 @@ export const printerToggle = printer => ({
   printer,
 });
 
-// export const print =
+export const setFileUploadModal = state => ({
+  type: FILE_UPLOAD_MODAL_TOGGLE,
+  state,
+});
+
+export const setFileUploadState = state => ({
+  type: SET_FILE_UPLOAD_STATE,
+  state,
+});
