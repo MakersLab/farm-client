@@ -1,4 +1,7 @@
 .controllBar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   background-color: #f9ef7f;
   padding: 10px;
   text-align: center;
