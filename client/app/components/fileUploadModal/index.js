@@ -40,7 +40,7 @@ const FileUploadModal = ({ isOpen, children, close, confirm, isUploadingFile, se
     <SelectedPrinters selectedPrinters={selectedPrinters} />
     <span className={style.fileName}>{fileInput && extractFileNameFromPath(fileInput.value)}</span>
     <ControllButton onClick={() => { fileInput.click(); }}>Load file</ControllButton>
-    <input type="file" hidden open ref={(input) => { fileInput = input; }} accept=".gcode"/>
+    <input type="file" hidden open ref={(input) => { fileInput = input; }} accept=".gco"/>
     <ControllButton disabled={confirmButtonstate()} onClick={() => { onUploadButtonClick(confirm); }}>Upload</ControllButton>
   </Modal>
 );
