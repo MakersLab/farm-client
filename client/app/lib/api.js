@@ -19,9 +19,12 @@ const sendRequest = (url, method, body) => {
   });
 };
 
-const sendFile = (url, method, file) => {
+const sendFile = (url, method, file, body) => {
   const form = new FormData();
   form.append('file', file[0]);
+  forEach(body, (value, key) => {
+    form.append(key, value);
+  });
 
   return fetch(`${API_URL}${url}`, {
     method,
