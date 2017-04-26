@@ -1,4 +1,15 @@
+@import "../app/variables.css";
+
 .printerList {
+  /*background-color: $some-color;*/
+  /*background-color: $some-color;*/
+  overflow-x: hidden;
+  width: 870px;
+  /*height: 800px;*/
+  /*border: solid 1px rgb(129, 129, 129);*/
+  /*padding: 15px;*/
+  /*background-color: #e6e9ad;*/
+  margin: auto;
 }
 
 .printerListRow {

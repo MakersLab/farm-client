@@ -29,7 +29,7 @@ class ControllBar extends React.Component {
 
   uploadFile(file) {
     this.props.setFileUploadState(true);
-    api.sendFile('/api/load', 'post', file)
+    api.sendFile('/api/load', 'post', file,{selectedPrinters:this.props.selectedPrinters})
     .then((text) => {
       this.props.setFileUploadState(false);
       this.props.setFileUploadModal(false);
@@ -90,13 +90,16 @@ class ControllBar extends React.Component {
     };
     const disabled = this.props.selectedPrinters.length <= 0;
     return (
-      <div className={style.controllBar}>
-        <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('PRINT'); }}>print</ControllButton>
-        <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('LOAD'); }}>load</ControllButton>
-        <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('PAUSE'); }}>pause</ControllButton>
-        <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('RESUME'); }}>resume</ControllButton>
-        <FileUploadModal {...modalSettings} />
-        <PrinterActionConfirmModal {...this.getConfirmModalSettings()}>{this.getConfirmModalText(this.props.confirmModalActionType)}</PrinterActionConfirmModal>
+      <div>
+        <div className={style.controllBarPlaceholder} style={{height: '100px'}}></div>
+        <div className={style.controllBar}>
+          <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('PRINT'); }}>print</ControllButton>
+          <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('LOAD'); }}>load</ControllButton>
+          <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('PAUSE'); }}>pause</ControllButton>
+          <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('RESUME'); }}>resume</ControllButton>
+          <FileUploadModal {...modalSettings} />
+          <PrinterActionConfirmModal {...this.getConfirmModalSettings()}>{this.getConfirmModalText(this.props.confirmModalActionType)}</PrinterActionConfirmModal>
+        </div>
       </div>);
   }
 }

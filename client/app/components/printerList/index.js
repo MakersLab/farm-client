@@ -3,6 +3,7 @@ import moment from 'moment';
 
 import style from './style.css';
 import Printer from '../printer';
+import H1 from '../h1';
 
 class PrinterListComponent extends React.Component {
 
@@ -35,8 +36,10 @@ class PrinterListComponent extends React.Component {
 
   render() {
     return (
-      <div className={style.printerList}>
-        {this.generatePrinterList()}
+      <div>
+        <div className={style.printerList}>
+          {this.generatePrinterList()}
+        </div>
         <div className={style.lastUpdated}>last updated {this.formatTime(this.props.updated)}</div>
       </div>);
   }

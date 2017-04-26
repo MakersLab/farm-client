@@ -3,7 +3,8 @@ const path = require('path');
 const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const cheerio = require('cheerio');
-
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const precss = require('precss');
 
 const plugins = [
   new webpack.HotModuleReplacementPlugin(),
@@ -25,6 +26,7 @@ const plugins = [
   new webpack.optimize.CommonsChunkPlugin({
     name: 'manifest', // But since there are no more common modules between them we end up with just the runtime code included in the manifest file
   }),
+  precss,
 ];
 
 module.exports = {
