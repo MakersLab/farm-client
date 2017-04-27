@@ -10,26 +10,33 @@ import { addPrinter, updatePrinterState } from '../actions/mainView';
 
 function initWebsocket() {
   const returnThis = eventChannel((emitter) => {
-    const ws = new WebSocket(WEBSOCKET_URL);
-    ws.onopen = () => {
-    };
-    ws.onerror = (error) => {
-      console.log(`WebSocket error ${error}`);
-    };
-    ws.onmessage = (e) => {
-      let msg = null;
-      try {
-        msg = JSON.parse(e.data);
-      } catch (error) {
-        console.error(`Error parsing : ${error.data}`);
-      }
-      if (msg) {
-        return emitter(updatePrinterState(msg));
-      }
-    };
-    // unsubscribe function
-    return () => {
-    };
+    function makeWebsocket() {
+      const ws = new WebSocket(WEBSOCKET_URL);
+      ws.onopen = () => {
+      };
+      ws.onerror = (error) => {
+        console.log(`WebSocket error ${error}`);
+      };
+      ws.onclose = () => {
+        console.log('Websocket connection down');
+        makeWebsocket();
+      };
+      ws.onmessage = (e) => {
+        let msg = null;
+        try {
+          msg = JSON.parse(e.data);
+        } catch (error) {
+          console.error(`Error parsing : ${error.data}`);
+        }
+        if (msg) {
+          return emitter(updatePrinterState(msg));
+        }
+      };
+      // unsubscribe function
+      return () => {
+      };
+    }
+    return makeWebsocket();
   });
   return returnThis;
 }
