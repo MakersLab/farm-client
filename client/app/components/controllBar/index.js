@@ -69,6 +69,10 @@ class ControllBar extends React.Component {
         this.props.setPrinterActionConfirmModalState(true, type);
         break;
       }
+      case 'CANCEL': {
+        this.props.setPrinterActionConfirmModalState(true, type);
+        break;
+      }
       default: {
         break;
       }
@@ -97,6 +101,7 @@ class ControllBar extends React.Component {
           <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('LOAD'); }}>upload</ControllButton>
           <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('PAUSE'); }}>pause</ControllButton>
           <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('RESUME'); }}>resume</ControllButton>
+          <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('CANCEL'); }}>cancel</ControllButton>
           <FileUploadModal {...modalSettings} />
           <PrinterActionConfirmModal {...this.getConfirmModalSettings()}>{this.getConfirmModalText(this.props.confirmModalActionType)}</PrinterActionConfirmModal>
         </div>
