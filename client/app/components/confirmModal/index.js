@@ -13,6 +13,7 @@ const PrinterActionConfirmModal = ({ isOpen, onYes, onNo, children, selectedPrin
     className={modalStyle.modal}
     overlayClassName={modalStyle.modalOverlay}
     onRequestClose={onNo}
+    contentLabel="PrinterActionConfirm"
   >
     <H1>{children}</H1>
     <SelectedPrinters selectedPrinters={selectedPrinters} />

@@ -34,7 +34,8 @@ const FileUploadModal = ({ isOpen, children, close, confirm, isUploadingFile, se
     isOpen={isOpen}
     className={style.modal}
     overlayClassName={style.modalOverlay}
-    onRequestClose={() => { close(); }}>
+    onRequestClose={() => { close(); }}
+    contentLabel="fileUpload">
     <H1>File upload</H1>
     { isUploadingFile && <span>this is a loading spinner for now</span> }
     <SelectedPrinters selectedPrinters={selectedPrinters} />
