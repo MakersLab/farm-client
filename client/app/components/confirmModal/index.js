@@ -16,8 +16,8 @@ const PrinterActionConfirmModal = ({ isOpen, onYes, onNo, children, selectedPrin
   >
     <H1>{children}</H1>
     <SelectedPrinters selectedPrinters={selectedPrinters} />
-    <ControllButton onClick={onNo}>No</ControllButton>
     <ControllButton onClick={onYes}>Yes</ControllButton>
+    <ControllButton onClick={onNo}>No</ControllButton>
   </Modal>
 )
 

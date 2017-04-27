@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const cheerio = require('cheerio');
-
+const precss = require('precss');
 
 const plugins = [
   // new webpack.NoErrorsPlugin(),
@@ -37,6 +37,7 @@ const plugins = [
       booleans: true,
     },
   }),
+  precss,
 ];
 
 module.exports = {
