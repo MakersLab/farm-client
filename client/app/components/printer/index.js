@@ -12,7 +12,7 @@ const progressBarOptions = {
   easing: 'easeInOut',
   duration: 1400,
   color: '#FFEA82',
-  trailColor: '#eee',
+  trailColor: '#888',
   trailWidth: 1,
   svgStyle: { width: '100%', height: '100%' },
   text: {
@@ -36,8 +36,31 @@ const progressBarOptions = {
   },
 };
 
+function getPrinterStateClassName(state) {
+  switch (state) {
+  case 'Operational': {
+    return 'printerOperational';
+  }
+  case 'Printing': {
+    return 'printerPrinting';
+  }
+  case 'Paused': {
+    return 'printerPaused';
+  }
+  case 'Octoprint is unreachable': {
+    return 'printerError';
+  }
+  case 'Printer is unreachable': {
+    return 'printerError';
+  }
+  default: {
+    return '';
+  }
+  }
+}
+
 const Printer = ({ name, state, progress, nozzleTemperature, bedTemperature, fileName, timePrinting, timeRemaining, link, selected, toggleSelected}) => (
-  <div className={`printer ${style.printer}`}>
+  <div className={`printer ${style.printer} ${style[getPrinterStateClassName(state)]}`}>
     <div className={`${style.printerHeader} ${selected ? style['printer--selected'] : '' }`}>
       <div className={style.printerName}><a href={link} className={style.printerNameLink} target="_blank" rel="noreferrer noopener"><span>{name}</span></a></div>
       { selected && <div className={style.printerSelected}>selected</div> }

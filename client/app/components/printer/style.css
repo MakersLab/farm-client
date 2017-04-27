@@ -1,3 +1,6 @@
+@import "../app/variables.css";
+
+
 .printer {
   display: inline-block;
   background-color: #eee;
@@ -9,9 +12,21 @@
   border-radius: 2px;
   &--selected{
     @inherit: .printer;
-    background-color: #ccc;
   }
 
+  &Operational {
+    background-color: blue;
+    background-color: $printer-operational;
+  }
+  &Printing {
+    background-color: $printer-printing;
+  }
+  &Error {
+    background-color: $printer-error;
+  }
+  &Paused {
+    background-color: $printer-paused;
+  }
 }
 
 .printerBody {
@@ -19,14 +34,12 @@
   margin: 3px;
   background-color: white;
   cursor: pointer;
-
+  white-space: nowrap;
   &--selected{
     @inherit: .printerBody;
-    background-color: #f2f2ef;
+    background-color: #dfdfdf;
   }
-
 }
-
 
 .printerHeader {
   padding: 5px;
