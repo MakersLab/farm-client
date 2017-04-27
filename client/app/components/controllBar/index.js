@@ -94,7 +94,7 @@ class ControllBar extends React.Component {
         <div className={style.controllBarPlaceholder} style={{height: '100px'}}></div>
         <div className={style.controllBar}>
           <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('PRINT'); }}>print</ControllButton>
-          <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('LOAD'); }}>load</ControllButton>
+          <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('LOAD'); }}>upload</ControllButton>
           <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('PAUSE'); }}>pause</ControllButton>
           <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('RESUME'); }}>resume</ControllButton>
           <FileUploadModal {...modalSettings} />
