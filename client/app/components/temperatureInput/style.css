@@ -1,0 +1,23 @@
+.inputWrapper {
+  width: 10em;
+  display: block;
+  margin: 10px;
+  label {
+    font-family: 'Raleway';
+    padding: 5px;
+    font-weight: 500;
+    text-transform: lowercase;
+    margin-right: 4px;
+  }
+  input {
+    padding: 5px;
+    border: solid 1px black;
+    border-radius: 4px;
+    width: 3em;
+    text-align: right;
+  }
+  span {
+    font-weight: 400;
+    margin-left: 4px;
+  }
+}

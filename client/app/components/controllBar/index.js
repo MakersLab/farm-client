@@ -1,23 +1,33 @@
 import React, { PropTypes } from 'react';
 import Modal from 'react-modal';
+import { cloneDeep } from 'lodash';
 
 import ControllButton from '../ControllButton';
 import H1 from '../h1';
 import FileUploadModal from '../fileUploadModal';
 import PrinterActionConfirmModal from '../confirmModal';
+import PreheatModal from '../preheatModal';
 import style from './style.css';
 import api from '../../lib/api';
 
 class ControllBar extends React.Component {
   constructor(props) {
     super(props);
-
+    this.state = {
+      modal: {
+        preheat: {
+          tool: 0,
+          bed: 0,
+        },
+      },
+    };
     this.makeRequest = this.makeRequest.bind(this);
     this.getConfirmModalSettings = this.getConfirmModalSettings.bind(this);
   }
 
-  makeRequest(command) {
-    api.sendRequest(`/api/${command}`,'post',{selectedPrinters:this.props.selectedPrinters})
+  makeRequest(command, body = {}) {
+    body.selectedPrinters = this.props.selectedPrinters;
+    api.sendRequest(`/api/${command}`, 'post', body)
     .then((response) => {
       console.log(response);
     });
@@ -38,7 +48,7 @@ class ControllBar extends React.Component {
 
   getConfirmModalSettings() {
     return {
-      isOpen: this.props.confirmModalState,
+      isOpen: this.props.confirmModalActionType != 'PREHEAT' ? this.props.confirmModalState : false,
       onYes: () => {
         this.makeRequest(this.props.confirmModalActionType.toLowerCase());
         this.props.setPrinterActionConfirmModalState(false);
@@ -46,6 +56,37 @@ class ControllBar extends React.Component {
       onNo: () => {
         this.props.setPrinterActionConfirmModalState(false);
       },
+      selectedPrinters: this.props.selectedPrinterNames,
+    };
+  }
+
+  getPreheatModalSettings() {
+    return {
+      isOpen: this.props.confirmModalActionType == 'PREHEAT' ? this.props.confirmModalState : false,
+      close: () => {
+        this.props.setPrinterActionConfirmModalState(false);
+      },
+      confirm: () => {
+        const body = {
+          tool: this.state.modal.preheat.tool,
+          bed: this.state.modal.preheat.bed,
+        }
+        this.makeRequest(this.props.confirmModalActionType.toLowerCase(), body);
+        this.props.setPrinterActionConfirmModalState(false);
+      },
+      toolInputChange: (event) => {
+        console.log('ha')
+        const newState = cloneDeep(this.state);
+        newState.modal.preheat.tool = event.target.value;
+        this.setState(newState)
+      },
+      bedInputChange: (event) => {
+        const newState = cloneDeep(this.state);
+        newState.modal.preheat.bed = event.target.value;
+        this.setState(newState)
+      },
+      toolInputValue: this.state.modal.preheat.tool,
+      bedInputValue: this.state.modal.preheat.bed,
       selectedPrinters: this.props.selectedPrinterNames,
     };
   }
@@ -70,6 +111,10 @@ class ControllBar extends React.Component {
         break;
       }
       case 'CANCEL': {
+        this.props.setPrinterActionConfirmModalState(true, type);
+        break;
+      }
+      case 'PREHEAT': {
         this.props.setPrinterActionConfirmModalState(true, type);
         break;
       }
@@ -102,8 +147,10 @@ class ControllBar extends React.Component {
           <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('PAUSE'); }}>pause</ControllButton>
           <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('RESUME'); }}>resume</ControllButton>
           <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('CANCEL'); }}>cancel</ControllButton>
+          <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('PREHEAT'); }}>preheat</ControllButton>
           <FileUploadModal {...modalSettings} />
           <PrinterActionConfirmModal {...this.getConfirmModalSettings()}>{this.getConfirmModalText(this.props.confirmModalActionType)}</PrinterActionConfirmModal>
+          <PreheatModal {...this.getPreheatModalSettings()}>Preheat</PreheatModal>
         </div>
       </div>);
   }

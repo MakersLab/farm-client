@@ -13,3 +13,10 @@ export function convertMinutesDuration(duration) {
   }
   return '00: 00: 00';
 }
+
+let id = 0;
+
+export function getUniqueId() {
+  id += 1;
+  return `unique-id-${id}`;
+}
