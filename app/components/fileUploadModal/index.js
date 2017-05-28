@@ -25,6 +25,7 @@ function confirmButtonstate() {
 
 function onUploadButtonClick(confirm) {
   if (fileInput && fileInput.value) {
+    console.log(fileInput.files);
     confirm(fileInput.files);
   }
 }
