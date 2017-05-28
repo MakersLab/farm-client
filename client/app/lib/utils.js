@@ -9,7 +9,7 @@ export function getUnits(unit) {
 
 export function convertMinutesDuration(duration) {
   if (duration) {
-    return Moment.utc(duration * 60000).format('HH: mm: ss');
+    return Moment.utc((duration * 1000)).format('HH: mm: ss');
   }
   return '00: 00: 00';
 }
