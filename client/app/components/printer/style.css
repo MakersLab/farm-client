@@ -27,6 +27,9 @@
   &Paused {
     background-color: $printer-paused;
   }
+  &FileHover {
+    background-color: $printer-hover;
+  }
 }
 
 .printerBody {
@@ -83,4 +86,9 @@ span {
 .info {
   text-overflow: ellipsis;
   overflow-x: hidden;
+}
+
+.dropzone {
+  background-color: rgb(85, 175, 174);
+  display: inline-block;
 }
