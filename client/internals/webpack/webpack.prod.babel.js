@@ -5,6 +5,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const cheerio = require('cheerio');
 const precss = require('precss');
 
+
+process.env.NODE_ENV = 'production';
 const plugins = [
   // new webpack.NoErrorsPlugin(),
   new HtmlWebpackPlugin({
@@ -38,6 +40,11 @@ const plugins = [
     },
   }),
   precss,
+  new webpack.DefinePlugin({
+    'process.env': {
+      'NODE_ENV': JSON.stringify('production')
+  }
+})
 ];
 
 module.exports = {
