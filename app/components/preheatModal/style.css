@@ -1,0 +1,9 @@
+.aside {
+  float: left;
+  width: 50%;
+}
+
+.row {
+  float: none;
+  display: inline-block;
+}

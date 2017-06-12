@@ -75,7 +75,6 @@ class ControllBar extends React.Component {
         this.props.setPrinterActionConfirmModalState(false);
       },
       toolInputChange: (event) => {
-        console.log('ha')
         const newState = cloneDeep(this.state);
         newState.modal.preheat.tool = event.target.value;
         this.setState(newState)
@@ -84,6 +83,10 @@ class ControllBar extends React.Component {
         const newState = cloneDeep(this.state);
         newState.modal.preheat.bed = event.target.value;
         this.setState(newState)
+      },
+      onPresetClick: (body) => {
+        this.makeRequest(this.props.confirmModalActionType.toLowerCase(), body);
+        this.props.setPrinterActionConfirmModalState(false);
       },
       toolInputValue: this.state.modal.preheat.tool,
       bedInputValue: this.state.modal.preheat.bed,
