@@ -105,6 +105,11 @@ module.exports = {
         limit: 10000,
       },
     },
+    {
+      test: /\.yaml$/,
+      include: path.resolve('data'),
+      loader: 'yaml',
+    },
     ],
   },
   node: {

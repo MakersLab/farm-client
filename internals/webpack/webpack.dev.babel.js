@@ -99,6 +99,11 @@ module.exports = {
       test: /\.(eot|svg|ttf|woff|woff2)$/,
       loader: 'file?name=public/fonts/[name].[ext]',
     },
+    {
+      test: /\.yaml$/,
+      include: path.resolve('data'),
+      loader: 'yaml',
+    },
     ],
   },
   node: {
