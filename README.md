@@ -1,7 +1,7 @@
 # Farm - client
  Application that drives 3D printer farm
 
-Version 0.2.0
+Version 0.3.0
 
 # Requirements
 
