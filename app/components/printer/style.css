@@ -1,0 +1,94 @@
+@import "../app/variables.css";
+
+
+.printer {
+  display: inline-block;
+  background-color: #eee;
+  border: solid 1px grey;
+  padding: 1px;
+  margin:10px;
+  width: 400px;
+  transition: 0.5s;
+  border-radius: 2px;
+  &--selected{
+    @inherit: .printer;
+  }
+
+  &Operational {
+    background-color: blue;
+    background-color: $printer-operational;
+  }
+  &Printing {
+    background-color: $printer-printing;
+  }
+  &Error {
+    background-color: $printer-error;
+  }
+  &Paused {
+    background-color: $printer-paused;
+  }
+  &FileHover {
+    background-color: $printer-hover;
+  }
+}
+
+.printerBody {
+  padding: 10px;
+  margin: 3px;
+  background-color: white;
+  cursor: pointer;
+  white-space: nowrap;
+  &--selected{
+    @inherit: .printerBody;
+    background-color: #dfdfdf;
+  }
+}
+
+.printerHeader {
+  padding: 5px;
+  margin: 3px;
+}
+
+.printerName {
+  display: inline;
+  text-align: left;
+}
+
+.printerSelected {
+  display: inline;
+  text-align: right;
+  float: right;
+}
+
+.printerNameLink {
+  display: inline;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #2c2c2d;
+  transition: 0.2s;
+  &:hover{
+    color: #1d1dd2;
+  }
+}
+
+.progressBar {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+span {
+  font-weight: bold;
+  font-family: 'roboto';
+
+}
+
+.info {
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+}
+
+.dropzone {
+  background-color: rgb(85, 175, 174);
+  display: inline-block;
+}

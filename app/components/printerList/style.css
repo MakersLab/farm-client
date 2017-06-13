@@ -1,0 +1,42 @@
+@import "../app/variables.css";
+
+.printerList {
+  /*background-color: $some-color;*/
+  /*background-color: $some-color;*/
+  overflow-x: hidden;
+  /*height: 800px;*/
+  /*border: solid 1px rgb(129, 129, 129);*/
+  /*padding: 15px;*/
+  /*background-color: #e6e9ad;*/
+  margin: auto;
+}
+
+.printerListRow {
+  display: block;
+}
+
+.printerListColumn {
+  margin: 0 40px 30px 40px;
+  float: left;
+}
+
+.lastUpdated {
+  color: #7d681d;
+  font-weight: 600;
+}
+
+.overlayDropzone {
+  top: 0;
+  left: 0;
+  position: fixed;
+  background-color: rgba(71, 95, 144, 0.24);
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  display: none;
+  transition: 0.4s;
+  &FileHover {
+    display: block;
+    background-color: rgba(71, 95, 144, 0.55);
+  }
+}

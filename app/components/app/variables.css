@@ -1,0 +1,7 @@
+$some-color: rgb(26, 159, 159);
+
+$printer-operational: rgb(56, 129, 83);
+$printer-printing: rgb(67, 150, 163);
+$printer-error: rgb(122, 59, 61);
+$printer-paused: rgb(227, 218, 101);
+$printer-hover: rgb(27, 108, 182);
