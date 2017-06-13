@@ -15,6 +15,8 @@ export const SET_FILE_UPLOAD_STATE = 'SET_FILE_UPLOAD_STATE';
 
 export const PRINTER_CONFIRM_MODAL = 'PRINTER_CONFIRM_MODAL';
 
+export const SET_PRINTER_GRID = 'SET_PRINTER_GRID';
+
 export const addPrinter = (printer, id, link) => ({
   type: PRINTER_ADD,
   printer,
@@ -52,3 +54,8 @@ export const setPrinterActionConfirmModalState = (state, actionType) => {
   }
   return action;
 };
+
+export const setPrinterGrid = grid => ({
+  type: SET_PRINTER_GRID,
+  grid,
+});

@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import moment from 'moment';
 import Dropzone from 'react-dropzone';
+import _ from 'lodash';
 
 import style from './style.css';
 import Printer from '../printer';
@@ -78,20 +79,27 @@ class PrinterListComponent extends React.Component {
   }
 
   generatePrinterList() {
-    const keys = Object.keys(this.props.printers);
-    const printerRows = [];
-    if (keys.length > 0) {
-      const howManyTimes = Math.ceil(keys.length / 2);
-      for (let i = 0; i < howManyTimes; i+=1) {
-        printerRows.push(
-          <div key={i}>
-            {this.getPrinterComponent(keys[i * 2])}
-            { keys[(i * 2) + 1] && this.getPrinterComponent(keys[(i * 2) + 1])}
-          </div>);
-      }
-      return printerRows;
-    }
-    return (<div />);
+    const printerColumnArray = [];
+    _.forEach(this.props.grid.columns, (column) => {
+      const printerColumnKeys = _.chunk(column.printers, column.width);
+      const printerRowComponent = [];
+      _.forEach(printerColumnKeys, (printerRowKeys) => {
+        const printerRowArrayComponent = _.map(printerRowKeys, (printerKey) => {
+          return this.getPrinterComponent(printerKey);
+        });
+        printerRowComponent.push(
+          <div className={style.printerListRow}>
+            {printerRowArrayComponent}
+          </div>
+        );
+      });
+      printerColumnArray.push(
+        <div className={style.printerListColumn}>
+          {printerRowComponent}
+        </div>
+      )
+    });
+    return printerColumnArray;
   }
 
   render() {
@@ -101,13 +109,14 @@ class PrinterListComponent extends React.Component {
           {this.generatePrinterList()}
         </div>
         <div className={style.lastUpdated}>last updated {this.formatTime(this.props.updated)}</div>
-        <Dropzone className={`${style.overlayDropzone} ${this.state.fileHoverPrinter === 'overlay-window' || this.state.fileHoverPrinter === 'overlay'  ? style.overlayDropzoneFileHover : ''}`}
+        <Dropzone
+          className={`${style.overlayDropzone} ${this.state.fileHoverPrinter === 'overlay-window' || this.state.fileHoverPrinter === 'overlay' ? style.overlayDropzoneFileHover : ''}`}
           onDragEnter={this.onPrinterFileHover('overlay')}
           onDragLeave={this.onPrinterFileLeave}
           onDrop={this.onPrinterFileDrop}
           disableClick
           preventDropOnDocument={false}
-        ></Dropzone>
+        />
       </div>);
   }
 }
@@ -116,6 +125,8 @@ class PrinterListComponent extends React.Component {
 PrinterListComponent.propTypes = {
   printers: PropTypes.object.isRequired,
   toggleSelected: PropTypes.func.isRequired,
+  grid: PropTypes.object.isRequired,
+  updated: PropTypes.number.isRequired,
 };
 
 export default PrinterListComponent;

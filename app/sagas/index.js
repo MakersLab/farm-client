@@ -6,7 +6,7 @@ import { map } from 'lodash';
 
 import { WEBSOCKET_URL, API_URL } from '../lib/config';
 import { APP_FETCH_CONFIG } from '../actions/app';
-import { addPrinter, updatePrinterState } from '../actions/mainView';
+import { addPrinter, updatePrinterState, setPrinterGrid } from '../actions/mainView';
 
 function initWebsocket() {
   const returnThis = eventChannel((emitter) => {
@@ -57,6 +57,7 @@ function* makeRequest() {
   const actions = map(data.printers, (printer, key) => {
     return addPrinter(printer.name, key, printer.url);
   });
+  actions.push(setPrinterGrid(data.grid));
   for (let i = 0; i < actions.length; i += 1) {
     yield put(actions[i]);
   }

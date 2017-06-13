@@ -4,7 +4,6 @@
   /*background-color: $some-color;*/
   /*background-color: $some-color;*/
   overflow-x: hidden;
-  width: 870px;
   /*height: 800px;*/
   /*border: solid 1px rgb(129, 129, 129);*/
   /*padding: 15px;*/
@@ -13,7 +12,12 @@
 }
 
 .printerListRow {
+  display: block;
+}
 
+.printerListColumn {
+  margin: 0 40px 30px 40px;
+  float: left;
 }
 
 .lastUpdated {

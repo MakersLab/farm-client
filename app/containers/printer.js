@@ -5,6 +5,7 @@ import { printerToggle, setFileUploadState } from '../actions/mainView';
 
 const mapStateToProps = state => ({
   printers: state.printer.printers,
+  grid: state.printer.grid,
   updated: state.printer.lastUpdated,
   selectedPrinters: state.printer.selectedPrinters,
 });
