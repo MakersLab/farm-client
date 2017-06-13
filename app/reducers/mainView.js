@@ -8,6 +8,7 @@ import { PRINTER_ADD,
   SET_FILE_UPLOAD_STATE,
   PRINTER_CONFIRM_MODAL,
   SET_PRINTER_GRID,
+  PRINTER_APPLY_CONFIG,
  } from '../actions/mainView';
 
 const initialAppState = {
@@ -20,6 +21,7 @@ const initialAppState = {
     state: false,
     actionType: 'none',
   },
+  temperaturePresets: {},
 };
 
 const mainViewReducer = (state = initialAppState, action) => {
@@ -81,6 +83,13 @@ const mainViewReducer = (state = initialAppState, action) => {
   case SET_PRINTER_GRID: {
     const newState = cloneDeep(state);
     newState.grid = action.grid;
+    return newState;
+  }
+
+  case PRINTER_APPLY_CONFIG: {
+    const newState = cloneDeep(state);
+    newState.grid = action.config.grid;
+    newState.temperaturePresets = action.config.temperaturePresets;
     return newState;
   }
 

@@ -17,6 +17,8 @@ export const PRINTER_CONFIRM_MODAL = 'PRINTER_CONFIRM_MODAL';
 
 export const SET_PRINTER_GRID = 'SET_PRINTER_GRID';
 
+export const PRINTER_APPLY_CONFIG = 'PRINTER_APPLY_CONFIG';
+
 export const addPrinter = (printer, id, link) => ({
   type: PRINTER_ADD,
   printer,
@@ -58,4 +60,9 @@ export const setPrinterActionConfirmModalState = (state, actionType) => {
 export const setPrinterGrid = grid => ({
   type: SET_PRINTER_GRID,
   grid,
+});
+
+export const applyConfig = config => ({
+  type: PRINTER_APPLY_CONFIG,
+  config,
 });

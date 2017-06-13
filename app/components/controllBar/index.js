@@ -91,6 +91,7 @@ class ControllBar extends React.Component {
       toolInputValue: this.state.modal.preheat.tool,
       bedInputValue: this.state.modal.preheat.bed,
       selectedPrinters: this.props.selectedPrinterNames,
+      temperaturePresets: this.props.temperaturePresets,
     };
   }
 

@@ -11,7 +11,7 @@ import TemperatureInput from '../temperatureInput';
 import PreheatPresets from '../preheatPresets';
 import preheatPresetsConfig from 'json-loader!yaml-loader!./presets.yml';
 
-const PreheatModal = ({ isOpen, children, close, confirm, selectedPrinters, toolInputChange, bedInputChange, toolInputValue, bedInputValue, onPresetClick }) => (
+const PreheatModal = ({ isOpen, children, close, confirm, selectedPrinters, toolInputChange, bedInputChange, toolInputValue, bedInputValue, onPresetClick, temperaturePresets }) => (
   <Modal
     isOpen={isOpen}
     className={modalStyle.modal}
@@ -29,7 +29,7 @@ const PreheatModal = ({ isOpen, children, close, confirm, selectedPrinters, tool
       <div className={style.aside}>
         <H2>Preset</H2>
         <PreheatPresets
-          presets={preheatPresetsConfig.presets}
+          presets={temperaturePresets}
           onClick={onPresetClick}
         />
       </div>

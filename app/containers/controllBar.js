@@ -17,6 +17,7 @@ const mapStateToProps = state => ({
   isUploadingFile: state.printer.isUploadingFile,
   confirmModalState: state.printer.printerConfirmModal.state,
   confirmModalActionType: state.printer.printerConfirmModal.actionType,
+  temperaturePresets: state.printer.temperaturePresets,
 });
 
 const mapDispatchToProps = dispatch => ({
