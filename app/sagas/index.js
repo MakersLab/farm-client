@@ -6,8 +6,7 @@ import { map } from 'lodash';
 
 import { WEBSOCKET_URL, API_URL } from '../lib/config';
 import { APP_FETCH_CONFIG } from '../actions/app';
-import { addPrinter, updatePrinterState, setPrinterGrid, applyConfig } from '../actions/mainView';
-
+import { addPrinter, updatePrinterState, applyConfig } from '../actions/mainView';
 
 //  Code which handles websocket connection and receiving data
 function initWebsocket() {
@@ -46,12 +45,11 @@ function initWebsocket() {
 function loadConfig() {
   return fetch(`${API_URL}/api/printer-config`)
     .then((response) => {
-      //
-      return response.json()
+      return response.json();
     })
     .catch((error) => {
       throw error;
-    })
+    });
 }
 
 function* makeRequest() {
@@ -81,5 +79,5 @@ export default function* rootSaga() {
   yield [
     wsSagas(),
     watchFetchConfig(),
-  ]
+  ];
 }

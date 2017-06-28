@@ -21,7 +21,7 @@ class PrinterListComponent extends React.Component {
     window.addEventListener('dragenter', () => {
       if (this.props.selectedPrinters.length > 0 && this.state.fileHoverPrinter !== 'overlay-window') {
         this.setState({ fileHoverPrinter: 'overlay-window' });
-    }
+      }
     });
   }
 

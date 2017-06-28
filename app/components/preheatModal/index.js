@@ -9,7 +9,6 @@ import ControllButton from '../controllButton';
 import SelectedPrinters from '../selectedPrinters';
 import TemperatureInput from '../temperatureInput';
 import PreheatPresets from '../preheatPresets';
-import preheatPresetsConfig from 'json-loader!yaml-loader!./presets.yml';
 
 const PreheatModal = ({ isOpen, children, close, confirm, selectedPrinters, toolInputChange, bedInputChange, toolInputValue, bedInputValue, onPresetClick, temperaturePresets }) => (
   <Modal
