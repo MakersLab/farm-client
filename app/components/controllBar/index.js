@@ -152,6 +152,7 @@ class ControllBar extends React.Component {
           <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('RESUME'); }}>resume</ControllButton>
           <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('CANCEL'); }}>cancel</ControllButton>
           <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('PREHEAT'); }}>preheat</ControllButton>
+          <ControllButton onClick={() => { this.props.settingsActive(true); }}>settings</ControllButton>
           <FileUploadModal {...modalSettings} />
           <PrinterActionConfirmModal {...this.getConfirmModalSettings()}>{this.getConfirmModalText(this.props.confirmModalActionType)}</PrinterActionConfirmModal>
           <PreheatModal {...this.getPreheatModalSettings()}>Preheat</PreheatModal>
