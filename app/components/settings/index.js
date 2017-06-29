@@ -56,7 +56,7 @@ class Settings extends React.Component {
         <H1>Settings</H1>
         <H2>system</H2>
         <ControllButton onClick={this.shutdownAllPrinters}>shutdown all printers</ControllButton>
-        <ControllButton>shutdown whole farm</ControllButton>
+        <ControllButton onClick={this.shutdownFarm}>shutdown whole farm</ControllButton>
 
         {this.props.prompt ? <Prompt
           isOpen
