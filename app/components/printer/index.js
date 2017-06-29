@@ -55,6 +55,9 @@ function getPrinterStateClassName(state, isFileHover) {
     case 'Printer is unreachable': {
       return 'printerError';
     }
+    case 'Finished': {
+      return 'printerFinished';
+    }
     default: {
       return '';
     }

@@ -30,6 +30,9 @@
   &FileHover {
     background-color: $printer-hover;
   }
+  &Finished {
+    background-color: $printer-finish;
+  }
 }
 
 .printerBody {
