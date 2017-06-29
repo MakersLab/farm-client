@@ -11,6 +11,7 @@ import { PRINTER_ADD,
   PRINTER_APPLY_CONFIG,
  } from '../actions/mainView';
 
+
 const initialAppState = {
   printers: {},
   grid: {},
@@ -22,6 +23,7 @@ const initialAppState = {
     actionType: 'none',
   },
   temperaturePresets: {},
+  settingsModal: false,
 };
 
 const mainViewReducer = (state = initialAppState, action) => {

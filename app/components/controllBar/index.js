@@ -8,6 +8,7 @@ import FileUploadModal from '../fileUploadModal';
 import PrinterActionConfirmModal from '../confirmModal';
 import PreheatModal from '../preheatModal';
 import style from './style.css';
+import controllButtonStyle from '../controllButton/style.css';
 import api from '../../lib/api';
 
 class ControllBar extends React.Component {
@@ -122,6 +123,10 @@ class ControllBar extends React.Component {
         this.props.setPrinterActionConfirmModalState(true, type);
         break;
       }
+      case 'FINISH': {
+        this.props.setPrinterActionConfirmModalState(true, type);
+        break;
+      }
       default: {
         break;
       }
@@ -152,6 +157,8 @@ class ControllBar extends React.Component {
           <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('RESUME'); }}>resume</ControllButton>
           <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('CANCEL'); }}>cancel</ControllButton>
           <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('PREHEAT'); }}>preheat</ControllButton>
+          <ControllButton disabled={disabled} onClick={() => { this.controllButtonClick('FINISH'); }}>finish</ControllButton>
+          <ControllButton onClick={() => { this.props.settingsActive(true); }}>settings</ControllButton>
           <FileUploadModal {...modalSettings} />
           <PrinterActionConfirmModal {...this.getConfirmModalSettings()}>{this.getConfirmModalText(this.props.confirmModalActionType)}</PrinterActionConfirmModal>
           <PreheatModal {...this.getPreheatModalSettings()}>Preheat</PreheatModal>

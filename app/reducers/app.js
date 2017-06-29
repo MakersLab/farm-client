@@ -4,7 +4,7 @@ const initialAppState = {
   text: 'hello',
   config: {
     loading: true,
-  }
+  },
 };
 
 const appReducer = (state = initialAppState, action) => {

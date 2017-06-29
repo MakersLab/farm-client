@@ -3,6 +3,7 @@ import { map } from 'lodash';
 
 import ControllBar from '../components/controllBar';
 import { setFileUploadModal, setFileUploadState, setPrinterActionConfirmModalState } from '../actions/mainView';
+import { settingsActive } from '../actions/settings';
 
 function selectedPrintersNames(printers, selectedPrinters) {
   return map(selectedPrinters, (value) => {
@@ -26,6 +27,7 @@ const mapDispatchToProps = dispatch => ({
   setPrinterActionConfirmModalState: (state, action = false) => {
     dispatch(setPrinterActionConfirmModalState(state, action));
   },
+  settingsActive: (state) => { dispatch(settingsActive(state)); },
 });
 
 const MainView = connect(

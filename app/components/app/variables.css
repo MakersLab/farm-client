@@ -5,3 +5,4 @@ $printer-printing: rgb(67, 150, 163);
 $printer-error: rgb(122, 59, 61);
 $printer-paused: rgb(227, 218, 101);
 $printer-hover: rgb(27, 108, 182);
+$printer-finish: #98cc74;

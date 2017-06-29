@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../controllBar/style.css';
+import style from './style.css';
 
 const ControllButton = ({ onClick, disabled, children }) => (
   <button
