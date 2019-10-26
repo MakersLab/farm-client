@@ -52,6 +52,7 @@ class Settings extends React.Component {
         className={`${modalStyle.modal} ${style.modal}`}
         overlayClassName={modalStyle.modalOverlay}
         onRequestClose={this.closeModal}
+        contentLabel="whatEVER"
       >
         <H1>Settings</H1>
         <H2>system</H2>

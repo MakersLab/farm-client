@@ -6,3 +6,11 @@ $printer-error: rgb(122, 59, 61);
 $printer-paused: rgb(227, 218, 101);
 $printer-hover: rgb(27, 108, 182);
 $printer-finish: #98cc74;
+
+
+$printer-operational-gradient: linear-gradient(180deg, $printer-operational 0%, rgba(255,255,255,1) 80%);
+$printer-printing-gradient: linear-gradient(180deg, $printer-printing 0%, rgba(255,255,255,1) 80%);
+$printer-error-gradient: linear-gradient(180deg, $printer-error 0%, rgba(255,255,255,1) 80%);
+$printer-paused-gradient: linear-gradient(180deg, $printer-paused 0%, rgba(255,255,255,1) 80%);
+$printer-hover-gradient: linear-gradient(180deg, $printer-hover 0%, rgba(255,255,255,1) 80%);
+$printer-finish-gradient: #98cc74;

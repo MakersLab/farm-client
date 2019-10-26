@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types'
 import moment from 'moment';
 import Dropzone from 'react-dropzone';
 import _ from 'lodash';
@@ -109,14 +110,14 @@ class PrinterListComponent extends React.Component {
           {this.generatePrinterList()}
         </div>
         <div className={style.lastUpdated}>last updated {this.formatTime(this.props.updated)}</div>
-        <Dropzone
+        {/* <Dropzone
           className={`${style.overlayDropzone} ${this.state.fileHoverPrinter === 'overlay-window' || this.state.fileHoverPrinter === 'overlay' ? style.overlayDropzoneFileHover : ''}`}
           onDragEnter={this.onPrinterFileHover('overlay')}
           onDragLeave={this.onPrinterFileLeave}
           onDrop={this.onPrinterFileDrop}
           disableClick
           preventDropOnDocument={false}
-        />
+        /> */}
       </div>);
   }
 }
@@ -125,8 +126,8 @@ class PrinterListComponent extends React.Component {
 PrinterListComponent.propTypes = {
   printers: PropTypes.object.isRequired,
   toggleSelected: PropTypes.func.isRequired,
-  grid: PropTypes.object.isRequired,
-  updated: PropTypes.number.isRequired,
+  // grid: PropTypes.object.isRequired,
+// updated: PropTypes.number.isRequired,
 };
 
 export default PrinterListComponent;

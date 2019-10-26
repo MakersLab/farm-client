@@ -5,6 +5,7 @@ import Dropzone from 'react-dropzone';
 import style from './style.css';
 import { getUnits, convertMinutesDuration } from '../../lib/utils';
 import Link from '../link';
+import ProgressBar from '../progressBar';
 
 const ProgressBarLine = Progress.Line;
 
@@ -65,14 +66,18 @@ function getPrinterStateClassName(state, isFileHover) {
   } else {
     return 'printerFileHover';
   }
+
 }
 
 const Printer = ({ name, state, progress, nozzleTemperature, bedTemperature, fileName, timePrinting, timeRemaining, link, selected, toggleSelected, onFileHover, onFileLeave, isFileHover, onFileDrop}) => (
-  <Dropzone disableClick
-    className={`printer ${style.printer} ${style[getPrinterStateClassName(state, isFileHover)]}`}
-    onDragEnter={onFileHover}
-    onDragLeave={onFileLeave}
-    onDrop={onFileDrop}
+  // <Dropzone disableClick
+  //   className={`printer ${style.printer} ${style[getPrinterStateClassName(state, isFileHover)]}`}
+  //   onDragEnter={onFileHover}
+  //   onDragLeave={onFileLeave}
+  //   onDrop={onFileDrop}
+  // >
+  <div
+  className={`printer ${style.printer} ${style[getPrinterStateClassName(state, isFileHover)]}`}
   >
     <div className={``}>
       <div className={`${style.printerHeader} ${selected ? style['printer--selected'] : ''}`}>
@@ -86,16 +91,21 @@ const Printer = ({ name, state, progress, nozzleTemperature, bedTemperature, fil
         <div className={style.info} title={fileName}>file name: <span>{fileName}</span></div>
         <div className={style.info}>time printing: <span>{convertMinutesDuration(timePrinting)}</span></div>
         <div className={style.info}>time remaining: <span>{convertMinutesDuration(timeRemaining)}</span></div>
-          <ProgressBarLine
+          {/* <ProgressBarLine
             progress={progress/100}
             text={progress}
             initialAnimate
             options={progressBarOptions}
             containerClassName={style.progressBar}
+          /> */}
+          <ProgressBar
+            progress={progress}
+
           />
       </div>
     </div>
-  </Dropzone>
+  </div>
+  //</Dropzone>
 );
 
 export default Printer;

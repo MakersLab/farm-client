@@ -2,7 +2,9 @@
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: #f9ef7f;
+  background-image: #f9ef7fe8;
+  background-attachment: fixed;
+
   padding: 10px;
   text-align: center;
   height: 45px;

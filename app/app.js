@@ -14,13 +14,15 @@ import wsSagas from './sagas';
 const sagaMiddleware = createSagaMiddlevar();
 const store = createStore(reducer, applyMiddleware(sagaMiddleware));
 
+
 const renderApp = (Component) => {
   render(
-    <AppContainer>
+    // <AppContainer>
       <Provider store={store}>
         <Component />
       </Provider>
-    </AppContainer>,
+    // </AppContainer>,
+    ,
     document.getElementById('app'),
   );
 };
@@ -29,8 +31,8 @@ sagaMiddleware.run(wsSagas);
 
 renderApp(App);
 
-if (module.hot) {
-  module.hot.accept('./containers/app', () => {
-    renderApp(App);
-  });
-}
+// if (module.hot) {
+//   module.hot.accept('./containers/app', () => {
+//     renderApp(App);
+//   });
+// }

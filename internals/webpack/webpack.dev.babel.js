@@ -15,17 +15,17 @@ const plugins = [
     inject: true,
     templateContent: template(), //eslint-disable-line no-use-before-define
   }),
-  new webpack.optimize.CommonsChunkPlugin({
-    name: 'vendor',
-    minChunks(module) {
-      // this assumes your vendor imports exist in the node_modules directory
-      return module.context && module.context.indexOf('node_modules') !== -1;
-    },
-  }),
+  // new webpack.optimize.CommonsChunkPlugin({
+  //   name: 'vendor',
+  //   minChunks(module) {
+  //     // this assumes your vendor imports exist in the node_modules directory
+  //     return module.context && module.context.indexOf('node_modules') !== -1;
+  //   },
+  // }),
   // CommonChunksPlugin will now extract all the common modules from vendor and main bundles
-  new webpack.optimize.CommonsChunkPlugin({
-    name: 'manifest', // But since there are no more common modules between them we end up with just the runtime code included in the manifest file
-  }),
+  // new webpack.optimize.CommonsChunkPlugin({
+  //   name: 'manifest', // But since there are no more common modules between them we end up with just the runtime code included in the manifest file
+  // }),
   precss,
 ];
 
@@ -42,13 +42,25 @@ module.exports = {
     filename: './[name].js',
     chunkFilename: '[name].chunk.js',
   },
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   devServer: {
     hot: true,
     contentBase: path.resolve(__dirname, 'build'),
     publicPath: '/',
   },
   plugins,
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          chunks: "initial",
+          minChunks: 3,
+          name: "commons",
+          enforce: true
+        }
+      }
+    }
+  },
   module: {
     loaders: [{
       test: /\.js?$/,
@@ -67,21 +79,21 @@ module.exports = {
       loader: 'file-loader',
     }, {
       test: /\.(jpg|png|gif)$/,
-      loaders: [
-        'file-loader',
-        {
-          loader: 'image-webpack-loader',
-          query: {
-            progressive: true,
-            optimizationLevel: 7,
-            interlaced: false,
-            pngquant: {
-              quality: '65-90',
-              speed: 4,
-            },
-          },
-        },
-      ],
+      // loaders: [
+      //   'file-loader',
+      //   {
+      //     loader: 'image-webpack-loader',
+      //     query: {
+      //       progressive: true,
+      //       optimizationLevel: 7,
+      //       interlaced: false,
+      //       pngquant: {
+      //         quality: '65-90',
+      //         speed: 4,
+      //       },
+      //     },
+      //   },
+      // ],
     }, {
       test: /\.html$/,
       loader: 'html-loader',

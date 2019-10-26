@@ -1,37 +1,43 @@
 @import "../app/variables.css";
 
-
 .printer {
   display: inline-block;
   background-color: #eee;
   border: solid 1px grey;
+  /* border: solid 10px black; */
   padding: 1px;
   margin:10px;
   width: 400px;
   transition: 0.5s;
-  border-radius: 2px;
+  border-radius: 0px;
   &--selected{
     @inherit: .printer;
   }
 
   &Operational {
     background-color: blue;
-    background-color: $printer-operational;
+    /* background-color: $printer-operational; */
+    background: $printer-operational-gradient;
   }
   &Printing {
-    background-color: $printer-printing;
+    background: $printer-printing;
+    background: $printer-printing-gradient;
   }
   &Error {
-    background-color: $printer-error;
+    background: $printer-error;
+    background: $printer-error-gradient;
   }
   &Paused {
-    background-color: $printer-paused;
+    background: $printer-paused;
+    background: $printer-paused-gradient;
   }
   &FileHover {
-    background-color: $printer-hover;
+    background: $printer-hover;
+    background: $printer-hover-gradient;
   }
   &Finished {
-    background-color: $printer-finish;
+    background: $printer-finish;
+    background: $printer-finish-gradient;
   }
 }
 
