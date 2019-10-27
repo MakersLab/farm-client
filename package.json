@@ -5,10 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --optimize-minimize --config ./internals/webpack/webpack.dev.babel.js --progress --colors",
-    "prod": "webpack  --optimize-minimize --config ./internals/webpack/webpack.prod.babel.js --progress",
-    "dev": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ./internals/webpack/webpack.dev.babel.js --host=0.0.0.0",
-    "build-new": "webpack-dev-server --mode development --config internals/webpack/webpack.config.js"
+    "dev": "webpack-dev-server --mode development --config internals/webpack/webpack.config.js",
+    "build": "webpack --mode production   --config internals/webpack/webpack.config.js"
   },
   "repository": {
     "type": "git",
