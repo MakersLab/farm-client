@@ -1,7 +1,7 @@
 import 'babel-polyfill';
 
 import { eventChannel } from 'redux-saga';
-import { put, takeEvery, call, take } from 'redux-saga/effects';
+import { put, takeEvery, call, take, all } from 'redux-saga/effects';
 import { map } from 'lodash';
 
 import { WEBSOCKET_URL, API_URL } from '../lib/config';
@@ -10,6 +10,7 @@ import { addPrinter, updatePrinterState, applyConfig } from '../actions/mainView
 
 //  Code which handles websocket connection and receiving data
 function initWebsocket() {
+  console.log("websocket? ")
   const returnThis = eventChannel((emitter) => {
     function makeWebsocket() {
       const ws = new WebSocket(WEBSOCKET_URL);
@@ -54,6 +55,7 @@ function loadConfig() {
 
 function* makeRequest() {
   const data = yield call(loadConfig);
+  console.log(data)
   const actions = map(data.printers, (printer, key) => {
     return addPrinter(printer.name, key, printer.url);
   });
@@ -64,10 +66,12 @@ function* makeRequest() {
 }
 
 function* watchFetchConfig() {
+  console.log('watchfetch config')
   yield takeEvery(APP_FETCH_CONFIG, makeRequest);
 }
 
 function* wsSagas() {
+  console.log('websocket saga')
   const channel = yield call(initWebsocket);
   while (true) {
     const action = yield take(channel);
@@ -76,8 +80,12 @@ function* wsSagas() {
 }
 
 export default function* rootSaga() {
-  yield [
+  console.log('redux saga call')
+
+  yield  all([
     wsSagas(),
     watchFetchConfig(),
-  ];
+  ]);
+
+
 }

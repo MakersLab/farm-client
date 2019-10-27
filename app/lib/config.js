@@ -1,5 +1,7 @@
-export const REMOTE_BASE = `http://${window.location.hostname}`;
-export const WEBSOCKET_BASE = `ws://${window.location.hostname}`;
+// export const REMOTE_BASE = `http://${window.location.hostname}`;
+// export const WEBSOCKET_BASE = `ws://${window.location.hostname}`;
+export const REMOTE_BASE = `http://localhost`;
+export const WEBSOCKET_BASE = `ws://localhost`;
 
 export const API_PORT = '8000';
 export const WEBSOCKET_PORT = '8001';

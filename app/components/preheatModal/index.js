@@ -16,6 +16,7 @@ const PreheatModal = ({ isOpen, children, close, confirm, selectedPrinters, tool
     className={modalStyle.modal}
     overlayClassName={modalStyle.modalOverlay}
     onRequestClose={close}
+    contentLabel="whatever"
   >
     <H1>{children}</H1>
     <SelectedPrinters selectedPrinters={selectedPrinters} />

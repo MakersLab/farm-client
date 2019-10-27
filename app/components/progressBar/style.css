@@ -1,0 +1,19 @@
+.progress-container {
+  text-align: center;
+}
+
+.progress-wrapper {
+  background-color: rgba(0, 0, 0, 0.212);
+  padding: 0;
+  margin: 8px;
+  margin-top: 14px;
+}
+
+.progress {
+  padding: 0;
+  margin: 0;
+  color: transparent;
+  background-color: black;
+  height: 6px;
+  transition: 0.3s;
+}
