@@ -3,12 +3,15 @@
 .printerList {
   /*background-color: $some-color;*/
   /*background-color: $some-color;*/
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   /*height: 800px;*/
   /*border: solid 1px rgb(129, 129, 129);*/
   /*padding: 15px;*/
   /*background-color: #e6e9ad;*/
   margin: auto;
+  display: flex;
+  flex-flow: wrap;
+  width: max-content;
 }
 
 .printerListRow {
