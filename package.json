@@ -36,7 +36,7 @@
     "immutable": "4.0.0-rc.12",
     "lodash": "4.17.15",
     "mini-css-extract-plugin": "^0.8.0",
-    "moment": "2.24.0",
+    "moment": "2.29.4",
     "path": "0.12.7",
     "postcss": "7.0.18",
     "postcss-cssnext": "3.1.0",
